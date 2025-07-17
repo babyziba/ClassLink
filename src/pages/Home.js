@@ -1,6 +1,6 @@
 import React from 'react';
-import './Home.css'; // Make sure you create this file for styles
-import illustration from '../assets/illustration.png'; // Save the image as 'illustration.png' in an assets folder
+import './Home.css';  
+import illustration from '../assets/illustration.png'; 
 
 function Home() {
   return (
