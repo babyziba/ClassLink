@@ -1,7 +1,6 @@
 import React from 'react';
 import './home.css';  // ✅ fix 1: corrected capitalization
-// import illustration from '../assets/illustration.png'; // ❌ fix 2: no such file yet
-
+// import illustration from '../assets/illustration.png'; 
 function Home() {
   return (
     <div className="home-container">
