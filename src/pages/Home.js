@@ -1,5 +1,5 @@
 import React from 'react';
-import './home.css';  // ✅ fix 1: corrected capitalization
+import './home.css';  
 // import illustration from '../assets/illustration.png'; 
 function Home() {
   return (
