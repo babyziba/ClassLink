@@ -24,6 +24,11 @@
   font-size: 18px;
 }
 
+.nav-links li a {
+  text-decoration: none;
+  color: gray;
+}
+
 .home-main {
   display: flex;
   justify-content: space-between;

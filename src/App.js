@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import GetStarted from './pages/get_started'; // ✅ MATCH the function and file name
+import GetStarted from './pages/get_started';
 
 function App() {
   return (

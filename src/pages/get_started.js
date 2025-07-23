@@ -1,6 +1,6 @@
-// ✅ Step 1: Use correct import path
 import React from 'react';
-import './get_started.css'; // 👈 THIS MUST MATCH YOUR CSS FILENAME EXACTLY
+import './get_started.css';
+import students from '../assets/students.png'; // image import
 
 function GetStarted() {
   return (
@@ -9,8 +9,8 @@ function GetStarted() {
         <h2 className="logo">ClassLink</h2>
         <nav>
           <ul className="nav-links">
-            <li><a href="/">home</a></li> {/* ✅ Valid href to avoid warning */}
-            <li><a href="/login">login</a></li>
+            <li><a href="#">home</a></li>
+            <li><a href="#">login</a></li>
           </ul>
         </nav>
       </header>
@@ -21,13 +21,11 @@ function GetStarted() {
           <button className="get-started-btn">get started</button>
         </div>
         <div className="image-section">
-          {/* Optional image:
-              <img src={illustration} alt="Students talking" /> 
-          */}
+          <img src={students} alt="Students talking" />
         </div>
       </main>
     </div>
   );
 }
 
-export default GetStarted; // ✅ Must match the function name
+export default GetStarted;
