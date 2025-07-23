@@ -16,7 +16,7 @@ class Student:
         # self.myCourses = course if courses is not None else []  -- will add later
         self.userName = username
 
-        #hashes passworf
+        #hashes password
         hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
         password = "" # erases password in Student class for security - still exists in database
         
