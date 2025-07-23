@@ -2,6 +2,7 @@ import React from 'react';
 import MatchList from './components/MatchList';
 import mockProfiles from './data/mockProfiles';
 import './App.css';
+import Home from './pages/get_started.js';
 
 function App() {
   return (
