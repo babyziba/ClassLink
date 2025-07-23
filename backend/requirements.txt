@@ -3,17 +3,3 @@ npm install react
 npm install react-router-dom
 
 
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom"
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-
-
-
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-from pymongo import MongoClient
-from student import Student
-import bcrypt 
-
