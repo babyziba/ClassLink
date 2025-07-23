@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Home from './pages/Home';
+import GetStarted from './pages/get_started'; // ✅ MATCH the function and file name
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <GetStarted />
     </div>
   );
 }

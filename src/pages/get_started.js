@@ -1,15 +1,16 @@
+// ✅ Step 1: Use correct import path
 import React from 'react';
-import './home.css';  
-// import illustration from '../assets/illustration.png'; 
-function Home() {
+import './get_started.css'; // 👈 THIS MUST MATCH YOUR CSS FILENAME EXACTLY
+
+function GetStarted() {
   return (
     <div className="home-container">
       <header className="home-header">
         <h2 className="logo">ClassLink</h2>
         <nav>
           <ul className="nav-links">
-            <li><a href="#" style={{ textDecoration: 'none', color: 'gray' }}>home</a></li>
-            <li><a href="#" style={{ textDecoration: 'none', color: 'gray' }}>login</a></li>
+            <li><a href="/">home</a></li> {/* ✅ Valid href to avoid warning */}
+            <li><a href="/login">login</a></li>
           </ul>
         </nav>
       </header>
@@ -20,11 +21,13 @@ function Home() {
           <button className="get-started-btn">get started</button>
         </div>
         <div className="image-section">
-          {/* <img src={illustration} alt="Students talking" /> */}
+          {/* Optional image:
+              <img src={illustration} alt="Students talking" /> 
+          */}
         </div>
       </main>
     </div>
   );
 }
 
-export default Home;
+export default GetStarted; // ✅ Must match the function name
