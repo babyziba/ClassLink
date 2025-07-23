@@ -24,7 +24,7 @@ function Home() {
   };
 
   return (
-    <div className="form-container">
+<div className="form-container">
       {!isLoggedIn ? (
         <div>
           <h2>Login</h2>
