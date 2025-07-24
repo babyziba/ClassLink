@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import '../App.css'; 
+import 'signup.css'; 
 import { useNavigate } from 'react-router-dom'
+import axios from "axios";
 
 function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,6 +24,7 @@ function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     alert(`Courses: ${courses}\nInterests: ${interests}\nOn Campus: ${campusTime}`);
   };
 
@@ -68,7 +70,7 @@ function Home() {
             type="text"
             value={campusTime}
             onChange={(e) => setCampusTime(e.target.value)}
-          />
+          /> 
 
           <button type="submit" className="btn">Submit</button>
         </form>
