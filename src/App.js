@@ -19,13 +19,15 @@
 
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import get_started from "./pages/get_started.js";
+import GetStarted from "./pages/get_started.js";
 
 function App() {
   return (
     <Router>
-      <Route path="/" element={<Navigate to="/get_started" />} />
-      <Route path="/getstarted" element={<Navigate to="/get_started" />} />
+      <Routes>
+        <Route path="/" element={<Navigate to="/get_started" />} />
+        <Route path="/get_started" element={<GetStarted />} />
+      </Routes>
     </Router>
   )
 }
