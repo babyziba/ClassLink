@@ -22,7 +22,7 @@ function GetStarted() {
       <main className="home-main">
         <div className="text-section">
           <h1>Find classmates with<br />shared interests<br />and classes</h1>
-          <button className="get-started-btn" onClick={navigate("/login")}>get started</button>
+          <button className="get-started-btn" onClick={navigate("/signup")}>get started</button>
         </div>
         <div className="image-section">
           <img src={students} alt="Students talking" />
