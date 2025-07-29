@@ -1,0 +1,86 @@
+.home-container {
+    font-family: sans-serif;
+    padding: 20px;
+    background-color: #f9fbfb;
+  }
+  
+  .home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    color: #6c98b4;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .home-link {
+    color: gray;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+  }
+  
+  .home-main {
+    margin-top: 40px;
+  }
+  
+  .home-main h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #143951;
+  }
+  
+  .filter-text {
+    color: #143951;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .match-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: white;
+  }
+  
+  .match-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+  
+  .match-name {
+    margin: 0;
+    color: #143951;
+    font-size: 22px;
+  }
+  
+  .gray-text {
+    color: #999;
+    font-weight: bold;
+  }
+  
+  .connect-button {
+    background-color: #66a9cc;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
