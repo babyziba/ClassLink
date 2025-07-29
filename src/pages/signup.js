@@ -17,20 +17,19 @@ function Signup() {
     try {
       const respone = await axios.post("http://localhost:5000/signup", form);
 
-      // To keep user signed in
+      // To keep user signed in and redirect to homepage
       localStorage.setItem("username", form.username);
-
-
+      navigate("/home");
 
       if (form.password !== form.confirm) {
       alert("Passwords don't match.");
     } else {
       alert("Signup successful!");
-      navigate('/login');
+      navigate('/home');
     }
 
     } catch (error) {
-
+      alert(error.response?.data?.message || "Something went wrong");
     }
     
   };
@@ -39,12 +38,14 @@ function Signup() {
     <div className="form-container">
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <input name="username" placeholder="Username" onChange={handleChange} />
-        <input name="email" type="email" placeholder="Email" onChange={handleChange} />
-        <input name="birthday" type="date" onChange={handleChange} />
-        <input name="password" type="password" placeholder="Password" onChange={handleChange} />
-        <input name="confirm" type="password" placeholder="Confirm Password" onChange={handleChange} />
-        <button type="submit">Sign Up</button>
+        <input name="firstName" placeholder='First Name' onChange={handleChange} required/>
+        <input name="lastName" placeholder='Last Name' onChange={handleChange} required/>
+        <input name="userName" placeholder="Username" onChange={handleChange} required/>
+        <input name="email" type="email" placeholder="Email" onChange={handleChange} required/>
+        <input name="birthday" type="date" onChange={handleChange} required/>
+        <input name="password" type="password" placeholder="Password" onChange={handleChange} required/>
+        <input name="confirm" type="password" placeholder="Confirm Password" onChange={handleChange} required/>
+        <button name="submit-button" type="submit">Sign Up</button>
       </form>
       <p className="switch-text">
         Already have an account? <Link to="/login">Login</Link>
