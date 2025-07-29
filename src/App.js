@@ -20,6 +20,8 @@
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import GetStarted from "./pages/get_started.js";
+import Signup from "./pages/signup";
+import Login from "./pages/Login.js";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/get_started" />} />
         <Route path="/get_started" element={<GetStarted />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   )

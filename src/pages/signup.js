@@ -1,86 +1,56 @@
 import React, { useState } from 'react';
-import 'signup.css'; 
-import { useNavigate } from 'react-router-dom'
-import axios from "axios";
+import { Link, useNavigate } from 'react-router-dom';
+import '../App.css';
+import axios from 'axios';
 
-function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const [courses, setCourses] = useState('');
-  const [interests, setInterests] = useState('');
-  const [campusTime, setCampusTime] = useState('');
-
+function Signup() {
   const navigate = useNavigate();
+  const [form, setForm] = useState({
+    username: '', email: '', birthday: '', password: '', confirm: ''
+  });
 
-  const handleLogin = () => {
-    if (username && password) {
-      setIsLoggedIn(true);
-    } else {
-      alert('Please enter a username and password.');
-    }
-  };
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    alert(`Courses: ${courses}\nInterests: ${interests}\nOn Campus: ${campusTime}`);
+    try {
+      const respone = await axios.post("http://localhost:5000/signup", form);
+
+      // To keep user signed in
+      localStorage.setItem("username", form.username);
+
+
+
+      if (form.password !== form.confirm) {
+      alert("Passwords don't match.");
+    } else {
+      alert("Signup successful!");
+      navigate('/login');
+    }
+
+    } catch (error) {
+
+    }
+    
   };
 
   return (
-<div className="form-container">
-      {!isLoggedIn ? (
-        <div>
-          <h2>Login</h2>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button className="btn" onClick={handleLogin}>Login</button>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <h2>Tell us about you</h2>
-
-          <label>Courses</label>
-          <input
-            type="text"
-            value={courses}
-            onChange={(e) => setCourses(e.target.value)}
-          />
-
-          <label>Interests</label>
-          <input
-            type="text"
-            value={interests}
-            onChange={(e) => setInterests(e.target.value)}
-          />
-
-          <label>When are you on campus</label>
-          <input
-            type="text"
-            value={campusTime}
-            onChange={(e) => setCampusTime(e.target.value)}
-          /> 
-
-          <button type="submit" className="btn">Submit</button>
-        </form>
-      )}
+    <div className="form-container">
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSubmit}>
+        <input name="username" placeholder="Username" onChange={handleChange} />
+        <input name="email" type="email" placeholder="Email" onChange={handleChange} />
+        <input name="birthday" type="date" onChange={handleChange} />
+        <input name="password" type="password" placeholder="Password" onChange={handleChange} />
+        <input name="confirm" type="password" placeholder="Confirm Password" onChange={handleChange} />
+        <button type="submit">Sign Up</button>
+      </form>
+      <p className="switch-text">
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
     </div>
   );
 }
 
-export default Home;
-
-
-
-
+export default Signup;
