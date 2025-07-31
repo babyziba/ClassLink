@@ -1,11 +1,44 @@
-import React from 'react';
-import Home from './pages/home';
-import './App.css';
+// import React from 'react';
+// import MatchList from './components/MatchList';
+// import mockProfiles from './data/mockProfiles';
+// import './App.css';
+// import Home from './pages/get_started.js';
 
+// function App() {
+//   return (
+//     <div className="App" style={{padding: '2rem', fontFamily: 'sans-serif'}}>
+//       <h1>Class link header </h1>
+//         <p>
+//         Find classmates with shared classes and interests.
+//         <MatchList profiles={mockProfiles} />
+//         <button style={{ padding: '0.6rem 1.2rem', fontSize: '1rem' }}>Get Started</button>
+//         </p>
+//     </div>
+//   );
+// }
+
+
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import GetStarted from "./pages/get_started.js";
+import Signup from "./pages/signup.js";
+import Login from "./pages/Login.js";
+import Home from "./pages/home.js";
 
 function App() {
-  return <Home />;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/get_started" />} />
+        <Route path="/get_started" element={<GetStarted />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
+    </Router>
+  );
 }
 
-
 export default App;
+
+
+
