@@ -32,7 +32,7 @@ def signUp():
 def login():
     data = request.json
 
-    user = data.get("userName")
+    user = data.get("username")
     password = data.get("password")
 
     if not user:
