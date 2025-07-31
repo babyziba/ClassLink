@@ -6,7 +6,8 @@ import axios from 'axios';
 function Login() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    username: '', password: ''
+    username: "", 
+    password: ""
   });
   // const [username, setUsername] = useState('');
   // const [password, setPassword] = useState('');
@@ -48,7 +49,12 @@ function Login() {
   return (
     <div className="form-container">
       <h2>Login</h2>
-      <input placeholder="Username" value={form.username} onChange={(e) => setForm({...form, username: e.target.value})} required />
+      <input 
+        placeholder="Username" 
+        value={form.username} 
+        onChange={(e) => setForm({...form, username: e.target.value})} 
+        required 
+        />
       <input type="password" placeholder="Password" value={form.password} onChange={(e) => setForm({...form, password: e.target.value})} required />
       <button onClick={handleLogin}>Login</button>
       <p className="switch-text">
