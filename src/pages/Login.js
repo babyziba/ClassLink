@@ -1,31 +1,34 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import '../App.css';
+import React from 'react';
+import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
-function Login() {
+export default function Login() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = () => {
-    if (username && password) {
-      navigate('/userform');
-    } else {
-      alert('Please enter username and password.');
-    }
-  };
 
   return (
-    <div className="form-container">
-      <h2>Login</h2>
-      <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleLogin}>Login</button>
-      <p className="switch-text">
-        Don't have an account? <Link to="/signup">Sign up</Link>
-      </p>
+    <div className="login-wrapper">
+      <header>
+        <div className="logo">ClassLink</div>
+        <div className="nav">
+          <a href="#">home</a>
+        </div>
+      </header>
+
+      <div className="container">
+        <h1>Login</h1>
+        <form>
+          <label htmlFor="username">Username</label>
+          <input type="text" id="username" name="username" />
+
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" name="password" />
+
+          <button type="submit">Login</button>
+        </form>
+        <div className="toggle" onClick={() => navigate('/signup')}>
+          Don't have an account? <strong>SIGNUP!</strong>
+        </div>
+      </div>
     </div>
   );
 }
-
-export default Login;

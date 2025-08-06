@@ -1,41 +1,62 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import '../App.css';
+import './Signup.css';
+import { useNavigate } from 'react-router-dom';
 
-function Signup() {
+export default function Signup() {
+  const [currentForm, setCurrentForm] = useState('signup');
   const navigate = useNavigate();
-  const [form, setForm] = useState({
-    username: '', email: '', birthday: '', password: '', confirm: ''
-  });
-
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (form.password !== form.confirm) {
-      alert("Passwords don't match.");
-    } else {
-      alert("Signup successful!");
-      navigate('/');
-    }
-  };
 
   return (
-    <div className="form-container">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <input name="username" placeholder="Username" onChange={handleChange} />
-        <input name="email" type="email" placeholder="Email" onChange={handleChange} />
-        <input name="birthday" type="date" onChange={handleChange} />
-        <input name="password" type="password" placeholder="Password" onChange={handleChange} />
-        <input name="confirm" type="password" placeholder="Confirm Password" onChange={handleChange} />
-        <button type="submit">Sign Up</button>
-      </form>
-      <p className="switch-text">
-        Already have an account? <Link to="/">Login</Link>
-      </p>
+    <div>
+      <header>
+        <div className="logo">ClassLink</div>
+        <div className="nav">
+          <a href="#" onClick={() => setCurrentForm('signup')}>home</a>
+          <a href="#" onClick={() => setCurrentForm('form')}>form</a>
+        </div>
+      </header>
+
+      {currentForm === 'signup' && (
+        <div className="container">
+          <h1>Sign Up</h1>
+          <form>
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" name="email" />
+
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" name="password" />
+
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" />
+
+            <button type="submit">Sign Up</button>
+          </form>
+          <div className="toggle" onClick={() => setCurrentForm('form')}>
+            Already signed up? Fill out your info
+          </div>
+        </div>
+      )}
+
+      {currentForm === 'form' && (
+        <div className="container">
+          <h1>Tell us about you</h1>
+          <form>
+            <label htmlFor="courses">Courses</label>
+            <input type="text" id="courses" name="courses" />
+
+            <label htmlFor="interests">Interests</label>
+            <input type="text" id="interests" name="interests" />
+
+            <label htmlFor="onCampus">When are you on campus</label>
+            <input type="text" id="onCampus" name="onCampus" />
+
+            <button type="submit">Submit</button>
+          </form>
+          <div className="toggle" onClick={() => setCurrentForm('signup')}>
+            Back to signup
+          </div>
+        </div>
+      )}
     </div>
   );
 }
-
-export default Signup;
