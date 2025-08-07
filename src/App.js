@@ -1,17 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import Signup from './pages/signup';
-import UserForm from './pages/Username';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import GetStarted from "./pages/get_started.js";
+import Signup from "./pages/signup.js";
+import Login from "./pages/Login.js";
+import Home from "./pages/home.js";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Navigate to="/get_started" />} />
+        <Route path="/get_started" element={<GetStarted />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/userform" element={<Username />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </Router>
   );

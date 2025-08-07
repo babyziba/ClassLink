@@ -6,6 +6,30 @@ export default function Signup() {
   const [currentForm, setCurrentForm] = useState('signup');
   const navigate = useNavigate();
 
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    courses: [],
+    interests: []
+  })
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:5000/signup", form);
+
+      localStorage.setItem("email", email);
+      navigate("/home");
+    } catch (error) {
+      alert(error.respone?.data?.message || "Something went wrong");
+    }
+  }
+
   return (
     <div>
       <header>
@@ -21,15 +45,15 @@ export default function Signup() {
           <h1>Sign Up</h1>
           <form>
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" />
+            <input type="email" id="email" name="email" required/>
 
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" />
+            <input type="password" id="password" name="password" required/>
 
             <label htmlFor="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" />
+            <input type="password" id="confirmPassword" name="confirmPassword" required/>
 
-            <button type="submit">Sign Up</button>
+            <button type="submit" onClick={handleSubmit}>Sign Up</button>
           </form>
           <div className="toggle" onClick={() => setCurrentForm('form')}>
             Already signed up? Fill out your info
