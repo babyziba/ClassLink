@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import './App.css';
-import Home from './pages/home'; 
-
-function App() {
-  return (
-    <div className="App">
-      <Home />
-    </div>
-=======
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import GetStarted from "./pages/get_started.js";
 import Signup from "./pages/signup.js";
@@ -26,7 +15,6 @@ function App() {
         <Route path="/home" element={<Home />} />
       </Routes>
     </Router>
->>>>>>> origin/beforemain
   );
 }
 
