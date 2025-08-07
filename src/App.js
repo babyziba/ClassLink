@@ -1,44 +1,29 @@
-// import React from 'react';
-// import MatchList from './components/MatchList';
-// import mockProfiles from './data/mockProfiles';
-// import './App.css';
-// import Home from './pages/get_started.js';
-
-// function App() {
-//   return (
-//     <div className="App" style={{padding: '2rem', fontFamily: 'sans-serif'}}>
-//       <h1>Class link header </h1>
-//         <p>
-//         Find classmates with shared classes and interests.
-//         <MatchList profiles={mockProfiles} />
-//         <button style={{ padding: '0.6rem 1.2rem', fontSize: '1rem' }}>Get Started</button>
-//         </p>
-//     </div>
-//   );
-// }
-
-
+// src/App.js
+import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import GetStarted from "./pages/get_started.js";
-import Signup from "./pages/signup.js";
-import Login from "./pages/Login.js";
-import Home from "./pages/home.js";
+import GetStarted from "./pages/get_started";
+import Signup     from "./pages/signup";
+import Login      from "./pages/Login";
+import Home       from "./pages/home";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/get_started" />} />
+        <Route path="/" element={<Navigate to="/get_started" replace />} />
         <Route path="/get_started" element={<GetStarted />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        {/* 👇 pass the actual MongoDB ObjectId (not the username) */}
+        <Route
+          path="/home"
+          element={
+            <Home studentId="68773981f0123b40ff91ae4a" />
+          }
+        />
       </Routes>
     </Router>
   );
 }
 
 export default App;
-
-
-
