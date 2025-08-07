@@ -37,10 +37,6 @@ export default function Signup() {
     <div>
       <header>
         <div className="logo">ClassLink</div>
-        <div className="nav">
-          <a href="#" onClick={() => setCurrentForm('signup')}>home</a>
-          <a href="#" onClick={() => setCurrentForm('form')}>form</a>
-        </div>
       </header>
 
       {currentForm === 'signup' && (
