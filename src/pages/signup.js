@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import './Signup.css';
+import './signup.css';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 export default function Signup() {
   const [currentForm, setCurrentForm] = useState('signup');
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     courses: [],
@@ -23,7 +26,7 @@ export default function Signup() {
     try {
       const response = await axios.post("http://localhost:5000/signup", form);
 
-      localStorage.setItem("email", email);
+      localStorage.setItem("email", form.email);
       navigate("/home");
     } catch (error) {
       alert(error.respone?.data?.message || "Something went wrong");
@@ -44,6 +47,14 @@ export default function Signup() {
         <div className="container">
           <h1>Sign Up</h1>
           <form>
+
+            <label type="firstName">First Name</label>
+            <input type="firstName" id="firstName" name="firstName" required/>
+
+            <label type="lastName">Last Name</label>
+            <input type="lastName" id="lastName" name="lastName" required/>
+
+
             <label htmlFor="email">Email</label>
             <input type="email" id="email" name="email" required/>
 
@@ -53,11 +64,8 @@ export default function Signup() {
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input type="password" id="confirmPassword" name="confirmPassword" required/>
 
-            <button type="submit" onClick={handleSubmit}>Sign Up</button>
+            <button type="submit" onClick={() => setCurrentForm('form')}>Next</button>
           </form>
-          <div className="toggle" onClick={() => setCurrentForm('form')}>
-            Already signed up? Fill out your info
-          </div>
         </div>
       )}
 
@@ -77,7 +85,7 @@ export default function Signup() {
             <button type="submit">Submit</button>
           </form>
           <div className="toggle" onClick={() => setCurrentForm('signup')}>
-            Back to signup
+            Back
           </div>
         </div>
       )}
