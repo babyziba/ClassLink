@@ -10,6 +10,7 @@ courses = db["COURSES"]
 
 class Student: 
     # constructor for Student class. Takes in first name, last name, username, and password
+<<<<<<< HEAD
     def __init__(self, firstName, lastName, email, password, myCourses, myInterests):
         self.email = email
         self.first_name = firstName
@@ -20,11 +21,20 @@ class Student:
         else:
             self.my_courses = []
         # self.myCourses = course if courses is not None else []  -- will add later
+=======
+    def __init__(self, first, last, username, password):
+        self.firstName = first
+        self.lastName = last
+        # self.myCourses = course if courses is not None else []  -- will add later
+        self.userName = username
+
+>>>>>>> origin/beforemain
         #hashes password
         hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
         password = "" # erases password in Student class for security - still exists in database
         
         # checks if student already exists - might not need later
+<<<<<<< HEAD
         if students.find_one({"email": email}):
             print("Account already exists")
         else:
@@ -36,6 +46,17 @@ class Student:
                 "courseIds": myCourses,
                 "interests": myInterests,
                 "matches": []
+=======
+        if students.find_one({"firstName": first, "lastName": last}):
+            print("Student already exists")
+        else:
+            students.insert_one({
+                "firstName": first,
+                "lastName": last,
+                "userName": username,
+                "passwordHashed": hashed,
+                # "courses": course
+>>>>>>> origin/beforemain
             })
 
     # how Student is displayed -- will need to update to look better
@@ -50,6 +71,7 @@ class Student:
     #     }
     
     # method to add a course to Student
+<<<<<<< HEAD
     # def add_course(self, courseToAdd):
     #     from course import Course   
     #     self.myCourses.append(courseToAdd)
@@ -59,6 +81,17 @@ class Student:
     #     )
     #     print("Added course: ")
     #     print(courseToAdd)
+=======
+    def add_course(self, courseToAdd):
+        from course import Course   
+        self.myCourses.append(courseToAdd)
+        result = students.update_one(
+            {"firstName": self.firstName, "lastName": self.lastName},
+            {"$push": {"courses": courseToAdd}}
+        )
+        print("Added course: ")
+        print(courseToAdd)
+>>>>>>> origin/beforemain
 
 
     # method to remove a course from Student

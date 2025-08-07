@@ -1,0 +1,3 @@
+pip install axios flask flasks-cors
+npm install react
+npm install react-router-dom
