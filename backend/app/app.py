@@ -17,14 +17,16 @@ def signUp():
 
     first = data.get("firstName")
     last = data.get("lastName")
-    user = data.get("userName") 
+    email = data.get("email") 
+    user_courses = data.get("courses")
+    interests = data.get("interests")
 
-    if students.find_one({"userName": user}):
-        return jsonify({"message": "Username already exists"}), 409
+    if students.find_one({"email": email}):
+        return jsonify({"message": "account already exists with this email"}), 409
 
     password = data.get("password") 
 
-    new_student = Student(first, last, user, password)
+    new_student = Student(first, last, email, password, user_courses, interests)
 
     return jsonify({"message": "Student log in created successfully"}), 201
 
