@@ -70,13 +70,10 @@ export default function Signup() {
           <h1>Tell us about you</h1>
           <form>
             <label htmlFor="courses">Courses</label>
-            <input type="text" id="courses" name="courses" />
+            <input type="text" id="courses" name="courses" onChange={handleChange}/>
 
             <label htmlFor="interests">Interests</label>
-            <input type="text" id="interests" name="interests" />
-
-            <label htmlFor="onCampus">When are you on campus</label>
-            <input type="text" id="onCampus" name="onCampus" />
+            <input type="text" id="interests" name="interests" onChange={handleChange}/>
 
             <button type="submit" onClick={handleSubmit}>Submit</button>
           </form>
