@@ -45,20 +45,20 @@ export default function Signup() {
           <form>
 
             <label type="firstName">First Name</label>
-            <input type="firstName" id="firstName" name="firstName" required/>
+            <input type="firstName" id="firstName" name="firstName" onChange={handleChange} required/>
 
             <label type="lastName">Last Name</label>
-            <input type="lastName" id="lastName" name="lastName" required/>
+            <input type="lastName" id="lastName" name="lastName" onChange={handleChange} required/>
 
 
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" required/>
+            <input type="email" id="email" name="email" onChange={handleChange} required/>
 
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" required/>
+            <input type="password" id="password" name="password" onChange={handleChange} required/>
 
             <label htmlFor="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" required/>
+            <input type="password" id="confirmPassword" name="confirmPassword" onChange={handleChange} required/>
 
             <button type="submit" onClick={() => setCurrentForm('form')}>Next</button>
           </form>
@@ -78,7 +78,7 @@ export default function Signup() {
             <label htmlFor="onCampus">When are you on campus</label>
             <input type="text" id="onCampus" name="onCampus" />
 
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={handleSubmit}>Submit</button>
           </form>
           <div className="toggle" onClick={() => setCurrentForm('signup')}>
             Back
