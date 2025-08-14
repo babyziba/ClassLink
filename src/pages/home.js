@@ -5,16 +5,18 @@ import './home.css';
 import beepAvatar from '../assets/beep.png';
 import meepAvatar from '../assets/meep.png';
 
-axios.defaults.baseURL = 'http://localhost:5001';   
+//axios.defaults.baseURL = 'http://localhost:5001';   
 
 function Home() {
   const [matches, setMatches] = useState([]);
 
+  const user = localStorage.getItem("email");
+
   useEffect(() => {
-    const dummyUserId = '68773981f0123b40ff91ae4a';          
+    // const dummyUserId = '68773981f0123b40ff91ae4a';          
 
     axios
-      .get('/api/classmates', { params: { userId: dummyUserId } })
+      .get('/api/classmates', { params: { email: user } })
       .then(res =>
         setMatches(
           res.data.map((m, i) => ({
