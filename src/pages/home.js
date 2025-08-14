@@ -1,23 +1,32 @@
-import React from 'react';
+// src/pages/home.js
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './home.css';
-import beepAvatar from '../assets/beep.png'; 
-import meepAvatar from '../assets/meep.png'; 
+import beepAvatar from '../assets/beep.png';
+import meepAvatar from '../assets/meep.png';
+
+axios.defaults.baseURL = 'http://localhost:5001';   
 
 function Home() {
-  const matches = [
-    {
-      name: 'Beep B.',
-      courses: 'CS380, CS324',
-      interests: 'Basketball, Anime',
-      avatar: beepAvatar,
-    },
-    {
-      name: 'Meep M.',
-      courses: 'CS310, CS482',
-      interests: 'Music, Gym',
-      avatar: meepAvatar,
-    },
-  ];
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
+    const dummyUserId = '68773981f0123b40ff91ae4a';          
+
+    axios
+      .get('/api/classmates', { params: { userId: dummyUserId } })
+      .then(res =>
+        setMatches(
+          res.data.map((m, i) => ({
+            ...m,
+            avatar: i % 2 ? beepAvatar : meepAvatar,
+            courses: (m.courses || []).join(', '),
+            interests: (m.interests || []).join(', ')
+          }))
+        )
+      )
+      .catch(console.error);
+  }, []);
 
   return (
     <div className="home-container">

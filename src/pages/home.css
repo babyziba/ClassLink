@@ -1,13 +1,17 @@
 .home-container {
     font-family: sans-serif;
     padding: 20px;
-    background-color: #f9fbfb;
+    background-color: #ffff;
   }
   
   .home-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #f9fbfb;
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
   }
   
   .logo {
@@ -25,7 +29,12 @@
   
   .home-main {
     margin-top: 40px;
+    display: flex;            /* force vertical stacking */
+    flex-direction: column;   /* children go under each other */
+    align-items: flex-start;  /* keep cards left-aligned */
+    gap: 16px;                /* optional spacing between rows */
   }
+  
   
   .home-main h1 {
     font-size: 36px;
@@ -48,6 +57,7 @@
     padding: 20px;
     margin-bottom: 30px;
     background-color: white;
+    width: 720px;
   }
   
   .match-info {
