@@ -9,6 +9,7 @@ function GetStarted() {
   return (
     <div className="home-container">
       <header className="home-header">
+        <title>ClassLink | Get Started</title>
         <h2 className="logo">ClassLink</h2>
         <nav>
           <ul className="nav-links">

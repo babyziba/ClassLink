@@ -8,6 +8,7 @@ export default function Login() {
   return (
     <div className="login-wrapper">
       <header>
+        <title>ClassLink | Login</title>
         <div className="logo">ClassLink</div>
         <div className="nav">
           <a href="#">home</a>

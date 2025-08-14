@@ -32,6 +32,7 @@ function Home() {
     <div className="home-container">
       <header className="home-header">
         <h2 className="logo">ClassLink</h2>
+        <title>ClassLink | Home</title>
         <nav><a className="home-link" href="#">home</a></nav>
       </header>
 

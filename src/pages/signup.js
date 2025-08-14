@@ -37,6 +37,7 @@ export default function Signup() {
     <div>
       <header>
         <div className="logo">ClassLink</div>
+        <title>ClassLink | Sign Up</title>
       </header>
 
       {currentForm === 'signup' && (
