@@ -45,15 +45,15 @@ def signUp():
 @app.route("/login", methods=["POST"])
 def login():
     data = request.json
-    user = data.get("username")
+    user = data.get("email")
     password = data.get("password")
 
     if not user:
-        return jsonify({"message": "Username is required"}), 400
+        return jsonify({"message": "Email is required"}), 400
 
-    doc = students.find_one({"userName": user})
+    doc = students.find_one({"email": user})
     if not doc:
-        return jsonify({"message": "Username not found"}), 404
+        return jsonify({"message": "Email not found"}), 404
 
     if bcrypt.checkpw(password.encode(), doc["passwordHashed"]):
         return jsonify({
@@ -70,11 +70,11 @@ def login():
 @app.route("/api/classmates")
 def classmates():
     """GET /api/classmates?userId=<mongo_id>"""
-    user_id = request.args.get("userId")
-    if not user_id:
-        return jsonify({"message": "userId query-param required"}), 400
+    email = request.args.get("email")
+    if not email:
+        return jsonify({"message": "Email query-param required"}), 400
 
-    matches = get_matches_for(user_id, students)
+    matches = get_matches_for(email, students)
 
     # ↓↓↓ CHANGED: also match string _id plus common fields (including courseName / courseNumber)
     tokens = {str(x) for m in matches for x in (m.get("commonCourses") or [])}
@@ -118,4 +118,4 @@ def classmates():
 
 # ───────────────────────────
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(debug=True)
