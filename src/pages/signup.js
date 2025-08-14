@@ -23,6 +23,9 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    form.courses = form.courses.split(", ");
+    form.interests = form.interests.split(", ");
+
     try {
       const response = await axios.post("http://localhost:5000/signup", form);
 
