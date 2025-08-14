@@ -15,10 +15,15 @@ class Student:
         self.first_name = firstName
         self.last_name = lastName
 
-        if myCourses:
+        if myCourses is not None:
             self.my_courses = myCourses
         else:
             self.my_courses = []
+        
+        if myInterests:
+            self.my_interests = myInterests
+        else:
+            self.my_interests = []
         # self.myCourses = course if courses is not None else []  -- will add later
         #hashes password
         hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
