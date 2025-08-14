@@ -12,6 +12,7 @@ function App() {
         <Route path="/get_started" element={<GetStarted />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </Router>
   );
