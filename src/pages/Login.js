@@ -10,12 +10,12 @@ export default function Login() {
     email: '', password: ''
   });
    // If user is already logged in, redirects to home instead of signing in again
-  // useEffect(() => {
-  //   const user = localStorage.getItem("email");
+  useEffect(() => {
+    const user = localStorage.getItem("email");
 
-  //   if(user)
-  //       navigate("/home");
-  // }, [navigate]);
+    if(user)
+        navigate("/home");
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();

@@ -10,11 +10,13 @@ import meepAvatar from '../assets/meep.png';
 function Home() {
   const [matches, setMatches] = useState([]);
 
+  const [openId, setOpenId] = useState(null);
+
   const user = localStorage.getItem("email");
 
   useEffect(() => {        
 
-    axios
+    const response = axios
       .get('http://localhost:5000/api/classmates', { params: { email: user } })
       .then(res =>
         setMatches(
@@ -28,6 +30,18 @@ function Home() {
       )
       .catch(console.error);
   }, []);
+
+  const handleConnect = (idx) => setOpenId(openId === idx ? null : idx);
+
+  const handleCopy = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert("Copied to clipboard");
+    } catch (error)
+    {
+      alert("Could not copy to clipboard");
+    }
+  };
 
   return (
     <div className="home-container">
@@ -51,7 +65,24 @@ function Home() {
                 <p><strong>Shared interests</strong> <span className="gray-text">{match.interests}</span></p>
               </div>
             </div>
-            <button className="connect-button">Connect</button>
+            <button className="connect-button" onClick={() => handleConnect(index)}>{openId === index ? 'Hide' : 'Connect'}</button>
+
+             {openId === index && (
+              <div className="email-box" role="dialog" aria-label={`Contact ${match.name}`}>
+                <p className="email-line">
+                  <strong>Email:</strong>{' '}
+                  <a href={`mailto:${match.email}`}>{match.email || 'Not available'}</a>
+                </p>
+                <div className="popover-actions">
+                  <button className="secondary-button" onClick={() => handleCopy(match.email)}>
+                    Copy
+                  </button>
+                  <button className="secondary-button" onClick={() => setOpenId(null)}>
+                    Close
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </main>
