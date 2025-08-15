@@ -66,6 +66,9 @@ export default function Signup() {
 
             <button type="submit" onClick={() => setCurrentForm('form')}>Next</button>
           </form>
+          <div className="toggle" onClick={() => navigate('/login')}>
+               Already have an account? <strong>LOGIN!</strong>
+          </div>
         </div>
       )}
 
