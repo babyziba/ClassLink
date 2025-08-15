@@ -2,8 +2,11 @@ import React from 'react';
 import './home.css';
 import beepAvatar from '../assets/beep.png'; 
 import meepAvatar from '../assets/meep.png'; 
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigate = useNavigate();
+
   const matches = [
     {
       name: 'Beep B.',
@@ -19,11 +22,19 @@ function Home() {
     },
   ];
 
+  const handleLogout = () => {
+    // If you add authentication later, clear session/local storage here
+    navigate('/login');
+  };
+
   return (
     <div className="home-container">
       <header className="home-header">
         <h2 className="logo">ClassLink</h2>
-        <nav><a className="home-link" href="#">home</a></nav>
+        <nav>
+          <a className="home-link" href="#">home</a>
+          <button className="logout-button" onClick={handleLogout}>Logout</button>
+        </nav>
       </header>
 
       <main className="home-main">
