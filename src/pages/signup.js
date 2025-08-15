@@ -12,8 +12,8 @@ export default function Signup() {
     lastName: "",
     email: "",
     password: "",
-    courses: [],
-    interests: []
+    courses: "",
+    interests: ""
   })
 
   const handleChange = (e) => {
@@ -32,7 +32,7 @@ export default function Signup() {
       localStorage.setItem("email", form.email);
       navigate("/home");
     } catch (error) {
-      alert(error.respone?.data?.message || "Something went wrong");
+      alert(error.response?.data?.message || "Something went wrong");
     }
   }
 
