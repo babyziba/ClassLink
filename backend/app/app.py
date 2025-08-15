@@ -73,8 +73,13 @@ def classmates():
     email = request.args.get("email")
     if not email:
         return jsonify({"message": "Email query-param required"}), 400
+    
+    student_id = (students.find_one({"email": email}))["_id"]
 
-    matches = get_matches_for(email, students)
+    if not student_id:
+        return jsonify({"error": "Can't find student _id"})
+
+    matches = get_matches_for(student_id, students)
 
     # ↓↓↓ CHANGED: also match string _id plus common fields (including courseName / courseNumber)
     tokens = {str(x) for m in matches for x in (m.get("commonCourses") or [])}
