@@ -44,7 +44,7 @@ def get_matches_for(
 
     pipeline = [
         {"$match": {"_id": {"$ne": ObjectId(student_id)}}},
-        {"$project": {"firstName": 1, "lastName": 1, "courseIds": 1, "courses": 1, "interests": 1}},
+        {"$project": {"firstName": 1, "lastName": 1, "email": 1, "courseIds": 1, "courses": 1, "interests": 1}},
     ]
 
     scored: List[Dict] = []
@@ -65,6 +65,7 @@ def get_matches_for(
             "_id":           str(cand["_id"]),
             "firstName":     cand.get("firstName", ""),
             "lastName":      cand.get("lastName", ""),
+            "email":         cand.get("email", ""),
             "commonCount":   len(common_courses),
             "commonCourses": common_courses,          # now these are NAMES if available
             "commonInterests": common_interests,      # new
