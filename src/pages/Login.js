@@ -7,7 +7,7 @@ export default function Login() {
   const navigate = useNavigate();
   
   const [form, setForm] = useState({
-    username: '', password: ''
+    email: '', password: ''
   });
    // If user is already logged in, redirects to home instead of signing in again
   // useEffect(() => {
@@ -18,6 +18,7 @@ export default function Login() {
   // }, [navigate]);
 
   const handleLogin = async (e) => {
+    e.preventDefault();
 
     try {
       const response = await axios.post("http://localhost:5000/login", form);      
@@ -53,10 +54,23 @@ export default function Login() {
         <h1>Login</h1>
         <form>
           <label htmlFor="username">Email</label>
-          <input type="text" id="email" name="email" />
+          <input 
+            type="text" 
+            id="email" 
+            name="email"
+            value={form.email}
+            onChange={(e) => setForm({...form, email: e.target.value })}
+            required
+            />
 
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" />
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            value={form.password}
+            onChange={(e) => setForm({...form, password: e.target.value })}
+            />
 
           <button type="submit" onClick={handleLogin}>Login</button>
         </form>
