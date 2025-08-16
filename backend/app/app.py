@@ -44,8 +44,10 @@ def signUp():
     if students.find_one({"email": email}):
         return jsonify({"message": "account already exists with this email"}), 409
 
-    password = data.get("password")
-    new_student = Student(first, last, email, password, courses, interests)
+    password = data.get("password") 
+
+    new_student = Student(first, last, email, password, user_courses, interests)
+
     # NOTE: you still need to insert the new_student into Mongo here:
     # students.insert_one(new_student.__dict__)
     return jsonify({"message": "Student log in created successfully"}), 201
