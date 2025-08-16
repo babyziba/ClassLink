@@ -4,6 +4,7 @@ import axios from 'axios';
 import './home.css';
 import beepAvatar from '../assets/beep.png';
 import meepAvatar from '../assets/meep.png';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -11,12 +12,10 @@ function Home() {
   // const API_BASE_URL = process.env.REACT_APP_BASE_URL || "https://classlink-oc9n.onrender.com";
   // const api = axios.create({ baseURL: API_BASE_URL });
   const [matches, setMatches] = useState([]);
-
   const [openId, setOpenId] = useState(null);
-
   const user = localStorage.getItem("email");
-
   const [filterMode, setFilterMode] = useState('all'); 
+  const navigate = useNavigate();
 
   useEffect(() => {        
 
