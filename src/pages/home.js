@@ -8,8 +8,8 @@ import meepAvatar from '../assets/meep.png';
 
 
 function Home() {
-  const api = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
-
+  const API_BASE_URL = process.env.REACT_APP_BASE_URL || "https://classlink-oc9n.onrender.com";
+  const api = axios.create({ baseURL: API_BASE_URL });
   const [matches, setMatches] = useState([]);
 
   const [openId, setOpenId] = useState(null);

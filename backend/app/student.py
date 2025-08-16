@@ -14,6 +14,9 @@ class Student:
         self.email = email
         self.first_name = firstName
         self.last_name = lastName
+        self.courses = myCourses or []
+        self.interests = myInterests or []
+        self.myPassword = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 
         if myCourses is not None:
             self.my_courses = myCourses
@@ -42,32 +45,4 @@ class Student:
                 "interests": myInterests,
                 "matches": []
             })
-
-    # how Student is displayed -- will need to update to look better
-    def __str__(self):
-        return f"Student: {self.firstName} {self.lastName}, Courses: {', '.join(self.myCoursesourses)}"
-    
-    # def to_dict(self):
-    #     return {
-    #         "firstName": self.firstName,
-    #         "lastName": self.lastName,
-    #         "courses": self.myCourses
-    #     }
-    
-    # method to add a course to Student
-    # def add_course(self, courseToAdd):
-    #     from course import Course   
-    #     self.myCourses.append(courseToAdd)
-    #     result = students.update_one(
-    #         {"firstName": self.firstName, "lastName": self.lastName},
-    #         {"$push": {"courses": courseToAdd}}
-    #     )
-    #     print("Added course: ")
-    #     print(courseToAdd)
-
-
-    # method to remove a course from Student
-    # def remove_course(self, courseToRemove):
-    #     from course import Course
-    #     #need to complete
 
