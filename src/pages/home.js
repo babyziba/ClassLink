@@ -14,6 +14,8 @@ function Home() {
 
   const user = localStorage.getItem("email");
 
+  const [filterMode, setFilterMode] = useState('all'); 
+
   useEffect(() => {        
 
     const response = axios
@@ -43,6 +45,22 @@ function Home() {
     }
   };
 
+  const handleFilterClick = () => {
+    const choice = window.prompt('Filter by "courses" or "interests"?', 'courses');
+    if (!choice) return;
+    const v = choice.trim().toLowerCase();
+    if (v.startsWith('c')) setFilterMode('courses');
+    else if (v.startsWith('i')) setFilterMode('interests');
+    else alert('Please type "courses" or "interests".');
+  };
+
+  const clearFilter = () => setFilterMode('all');
+
+  const filteredMatches = matches.filter(m => {
+    if (filterMode === 'courses')    return (m.courses || '').trim().length > 0;
+    if (filterMode === 'interests')  return (m.interests || '').trim().length > 0;
+    return true; // 'all'
+  });
   return (
     <div className="home-container">
       <header className="home-header">
@@ -53,9 +71,17 @@ function Home() {
 
       <main className="home-main">
         <h1>My matches</h1>
-        <p className="filter-text">Filter matches</p>
 
-        {matches.map((match, index) => (
+        <div className="filter-row">
+          <button className="connect-button" onClick={handleFilterClick}>Filter matches</button>
+          {filterMode !== 'all' && (
+            <button className="secondary-button" onClick={clearFilter}>
+              Clear filter ({filterMode})
+            </button>
+          )}
+        </div>
+
+        {filteredMatches.map((match, index) => (
           <div className="match-card" key={index}>
             <div className="match-info">
               <img className="avatar" src={match.avatar} alt="avatar" />
@@ -65,9 +91,11 @@ function Home() {
                 <p><strong>Shared interests</strong> <span className="gray-text">{match.interests}</span></p>
               </div>
             </div>
-            <button className="connect-button" onClick={() => handleConnect(index)}>{openId === index ? 'Hide' : 'Connect'}</button>
+            <button className="connect-button" onClick={() => handleConnect(index)}>
+              {openId === index ? 'Hide' : 'Connect'}
+            </button>
 
-             {openId === index && (
+            {openId === index && (
               <div className="email-box" role="dialog" aria-label={`Contact ${match.name}`}>
                 <p className="email-line">
                   <strong>Email:</strong>{' '}
@@ -85,6 +113,10 @@ function Home() {
             )}
           </div>
         ))}
+
+        {filteredMatches.length === 0 && (
+          <p className="gray-text">No matches for this filter.</p>
+        )}
       </main>
     </div>
   );

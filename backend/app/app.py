@@ -117,7 +117,7 @@ def classmates():
             "name":      f"{m['firstName']} {m['lastName']}",
             "email": m.get("email"),
             "courses":   [name_map.get(str(x), str(x)) for x in (m.get("commonCourses") or [])],
-            "interests": [],
+            "interests": [name_map.get(str(x), str(x)) for x in (m.get("commonInterests") or [])],
         }
         for m in matches
     ])
