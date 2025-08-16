@@ -58,6 +58,13 @@ function Home() {
 
   const clearFilter = () => setFilterMode('all');
 
+  const handleLogout = () => {
+
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("email");
+    navigate('/login');
+  };
+
   const filteredMatches = matches.filter(m => {
     if (filterMode === 'courses')    return (m.courses || '').trim().length > 0;
     if (filterMode === 'interests')  return (m.interests || '').trim().length > 0;
@@ -68,7 +75,10 @@ function Home() {
       <header className="home-header">
         <h2 className="logo">ClassLink</h2>
         <title>ClassLink | Home</title>
-        <nav><a className="home-link" href="#">home</a></nav>
+        <nav>
+          <a className="home-link" href="#">home</a>
+          <button className="logout-button" onClick={handleLogout}>Logout</button>
+          </nav>
       </header>
 
       <main className="home-main">
