@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 export default function Login() { 
-  // const API_BASE_URL = process.env.REACT_APP_BASE_URL || "https://classlink-oc9n.onrender.com";
-  // const api = axios.create({ baseURL: API_BASE_URL });
+  const API_BASE_URL = process.env.REACT_APP_BASE_URL || "https://classlink-oc9n.onrender.com";
+  const api = axios.create({ baseURL: API_BASE_URL });
+  console.log("[Login] API_BASE_URL =", API_BASE_URL);
+
   const navigate = useNavigate();
   
   const [form, setForm] = useState({
@@ -23,7 +25,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await api.post("https://classlink-oc9n.onrender.com/api/login", form);      
+      const response = await axios.post("https://classlink-oc9n.onrender.com/api/login", form);      
 
       if (form.email && form.password) {
         // Saves first name for welcome message
@@ -54,7 +56,7 @@ export default function Login() {
 
       <div className="container">
         <h1>Login</h1>
-        <form>
+        <form onSubmit={handleLogin}>
           <label htmlFor="username">Email</label>
           <input 
             type="text" 
@@ -74,7 +76,7 @@ export default function Login() {
             onChange={(e) => setForm({...form, password: e.target.value })}
             />
 
-          <button type="submit" onClick={handleLogin}>Login</button>
+          <button type="submit">Login</button>
         </form>
         <div className="toggle" onClick={() => navigate('/signup')}>
           Don't have an account? <strong>SIGNUP!</strong>

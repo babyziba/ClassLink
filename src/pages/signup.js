@@ -30,7 +30,7 @@ export default function Signup() {
     form.interests = form.interests.split(", ");
 
     try {
-      const response = await api.post("https://classlink-oc9n.onrender.com/api/signup", form);
+      const response = await axios.post("https://classlink-oc9n.onrender.com/api/signup", form);
 
       localStorage.setItem("email", form.email);
       navigate("/home");
