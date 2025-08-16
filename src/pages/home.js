@@ -8,6 +8,8 @@ import meepAvatar from '../assets/meep.png';
 
 
 function Home() {
+  const api = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
+
   const [matches, setMatches] = useState([]);
 
   const [openId, setOpenId] = useState(null);
@@ -18,8 +20,8 @@ function Home() {
 
   useEffect(() => {        
 
-    const response = axios
-      .get('http://localhost:5000/api/classmates', { params: { email: user } })
+    const response = api
+      .get('/api/classmates', { params: { email: user } })
       .then(res =>
         setMatches(
           res.data.map((m, i) => ({

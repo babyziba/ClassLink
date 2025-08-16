@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 export default function Signup() {
+  const api = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
+
   const [currentForm, setCurrentForm] = useState('signup');
   const navigate = useNavigate();
 
@@ -27,7 +29,7 @@ export default function Signup() {
     form.interests = form.interests.split(", ");
 
     try {
-      const response = await axios.post("http://localhost:5000/signup", form);
+      const response = await api.post("api/signup", form);
 
       localStorage.setItem("email", form.email);
       navigate("/home");

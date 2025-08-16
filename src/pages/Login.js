@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 export default function Login() {
+  const api = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
   const navigate = useNavigate();
   
   const [form, setForm] = useState({
@@ -21,7 +22,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/login", form);      
+      const response = await api.post("api/login", form);      
 
       if (form.email && form.password) {
         // Saves first name for welcome message
