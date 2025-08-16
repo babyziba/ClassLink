@@ -32,7 +32,7 @@ def health():
 # ───────────────────────────
 #  SIGN-UP  (unchanged)
 # ───────────────────────────
-@app.route("api/signup", methods=["POST"])
+@app.route("/api/signup", methods=["POST"])
 def signUp():
     data = request.json
     first = data.get("firstName")
@@ -57,7 +57,7 @@ def signUp():
 # ───────────────────────────
 #  LOGIN  (unchanged)
 # ───────────────────────────
-@app.route("api/login", methods=["POST"])
+@app.route("/api/login", methods=["POST"])
 def login():
     data = request.json
     user = data.get("email")
