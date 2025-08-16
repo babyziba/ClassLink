@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 export default function Signup() {
-  // const API_BASE_URL = process.env.REACT_APP_BASE_URL || "https://classlink-oc9n.onrender.com";
-  // const api = axios.create({ baseURL: API_BASE_URL });
+  const API_BASE_URL = process.env.REACT_APP_BASE_URL || "https://classlink-oc9n.onrender.com";
+  const api = axios.create({ baseURL: API_BASE_URL });
 
   const [currentForm, setCurrentForm] = useState('signup');
   const navigate = useNavigate();

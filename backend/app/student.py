@@ -14,9 +14,6 @@ class Student:
         self.email = email
         self.first_name = firstName
         self.last_name = lastName
-        self.courses = myCourses or []
-        self.interests = myInterests or []
-        self.myPassword = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 
         if myCourses is not None:
             self.my_courses = myCourses
