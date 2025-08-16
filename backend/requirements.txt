@@ -1,3 +1,5 @@
-pip install axios flask flasks-cors
-npm install react
-npm install react-router-dom
+Flask
+flask-cors
+pymongo
+gunicorn
+bcrypt

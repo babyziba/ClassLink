@@ -22,3 +22,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 data/cifar-10-python.tar.gz
+
+# Python / backend ignores
+venv/
+__pycache__/
+*.pyc
+*.pth
+.env

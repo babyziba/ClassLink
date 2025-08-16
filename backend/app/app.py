@@ -2,17 +2,32 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
 from bson import ObjectId
-from student import Student
-from matchEngine import get_matches_for       # ← NEW
+from .student import Student
+from .matchEngine import get_matches_for       # ← NEW
 import bcrypt
+import os
 
 app = Flask(__name__)
+
+allowed_origins = os.getenv(
+    "ALLOWED_ORIGINS",
+    "http://localhost:3000"
+).split(",")
+
 CORS(app)
 
-client   = MongoClient("mongodb+srv://jjforsyth15:ClassLink2025@cluster1.imnisby.mongodb.net/")
+MONGODB_URI = os.environ.get("MONGODB_URI")
+if not MONGODB_URI:
+    raise RuntimeError("MONGODB_URI not set in environment")
+
+client   = MongoClient(MONGODB_URI)
 db       = client["CLASSLINK"]
 students = db["STUDENTS"]
 courses  = db["COURSES"]
+
+@app.get("/health")
+def health():
+    return {"ok": True}, 200
 
 # ───────────────────────────
 #  SIGN-UP  (unchanged)
