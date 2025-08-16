@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 export default function Login() { 
-  const API_BASE_URL = process.env.REACT_APP_BASE_URL || "https://classlink-oc9n.onrender.com";
-  const api = axios.create({ baseURL: API_BASE_URL });
+  // const API_BASE_URL = process.env.REACT_APP_BASE_URL || "https://classlink-oc9n.onrender.com";
+  // const api = axios.create({ baseURL: API_BASE_URL });
   const navigate = useNavigate();
   
   const [form, setForm] = useState({
@@ -23,7 +23,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await api.post("/api/login", form);      
+      const response = await api.post("https://classlink-oc9n.onrender.com/api/login", form);      
 
       if (form.email && form.password) {
         // Saves first name for welcome message

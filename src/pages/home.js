@@ -8,8 +8,8 @@ import meepAvatar from '../assets/meep.png';
 
 
 function Home() {
-  const API_BASE_URL = process.env.REACT_APP_BASE_URL || "https://classlink-oc9n.onrender.com";
-  const api = axios.create({ baseURL: API_BASE_URL });
+  // const API_BASE_URL = process.env.REACT_APP_BASE_URL || "https://classlink-oc9n.onrender.com";
+  // const api = axios.create({ baseURL: API_BASE_URL });
   const [matches, setMatches] = useState([]);
 
   const [openId, setOpenId] = useState(null);
@@ -20,8 +20,8 @@ function Home() {
 
   useEffect(() => {        
 
-    const response = api
-      .get('/api/classmates', { params: { email: user } })
+    const response = axios
+      .get('https://classlink-oc9n.onrender.com/api/classmates', { params: { email: user } })
       .then(res =>
         setMatches(
           res.data.map((m, i) => ({
